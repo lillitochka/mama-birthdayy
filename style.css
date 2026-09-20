@@ -1,1 +1,482 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  color: #6f4b59;
+  background:
+    radial-gradient(circle at 15% 10%, #fff8fb 0%, transparent 30%),
+    radial-gradient(circle at 85% 30%, #fff1f7 0%, transparent 35%),
+    linear-gradient(180deg, #fffafb 0%, #ffeef6 45%, #fff8fb 100%);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(212, 164, 80, 0.18) 1px, transparent 1px);
+  background-size: 35px 35px;
+  z-index: -1;
+}
+
+/* ЗАГРУЗКА */
+
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(160deg, #fff8fb, #ffeaf3);
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#loader h2 {
+  margin-top: 15px;
+  color: #b7833f;
+  font-family: "Dancing Script", cursive;
+  font-size: 30px;
+  text-align: center;
+}
+
+.loader-heart {
+  color: #e98aaa;
+  font-size: 70px;
+  animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* МУЗЫКА */
+
+.music-button {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 1000;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #d6a65c;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #b7833f;
+  font-size: 23px;
+  box-shadow: 0 6px 20px rgba(166, 111, 55, 0.18);
+  cursor: pointer;
+}
+
+/* ГЛАВНЫЙ ЭКРАН */
+
+.hero {
+  min-height: 100vh;
+  padding: 80px 20px 60px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sparkles {
+  color: #d5a04e;
+  font-size: 20px;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+  animation: sparkleFloat 3s ease-in-out infinite;
+}
+
+@keyframes sparkleFloat {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-7px);
+    opacity: 1;
+  }
+}
+
+.small-date {
+  color: #b7833f;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+}
+
+h1,
+h2 {
+  font-family: "Dancing Script", cursive;
+  color: #d77d9e;
+}
+
+.hero h1 {
+  font-size: clamp(46px, 14vw, 78px);
+  line-height: 0.95;
+  margin-bottom: 28px;
+}
+
+.main-photo {
+  width: min(86vw, 390px);
+  padding: 8px;
+  border-radius: 32px;
+  background: linear-gradient(135deg, #d7aa61, #fff4d8, #c79345);
+  box-shadow:
+    0 18px 45px rgba(173, 104, 130, 0.22),
+    0 0 30px rgba(214, 166, 92, 0.22);
+}
+
+.main-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+.gold-line {
+  width: 80px;
+  height: 2px;
+  margin: 28px 0 18px;
+  background: linear-gradient(90deg, transparent, #c9964d, transparent);
+}
+
+.intro {
+  max-width: 330px;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* ОБЩИЕ СЕКЦИИ */
+
+.section {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  padding: 75px 18px;
+}
+
+.section h2 {
+  text-align: center;
+  font-size: clamp(40px, 11vw, 58px);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #a87887;
+  margin-bottom: 32px;
+  font-size: 15px;
+}
+
+/* МОМЕНТЫ */
+
+.moments {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+}
+
+.moment {
+  padding: 10px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(211, 157, 74, 0.25);
+  box-shadow: 0 10px 30px rgba(184, 115, 140, 0.12);
+  transition: transform 0.3s ease;
+}
+
+.moment:active {
+  transform: scale(0.98);
+}
+
+.moment img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.moment p {
+  padding: 15px 8px 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.tut {
+  font-family: "Dancing Script", cursive;
+  font-size: 24px;
+  font-weight: 700;
+  color: #c48b3d;
+}
+
+/* ПРИЧИНЫ */
+
+.reasons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.reason {
+  width: 100%;
+  border: 1px solid #e1b777;
+  border-radius: 18px;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.88);
+  color: #8d6572;
+  font-family: "Nunito", sans-serif;
+  cursor: pointer;
+  box-shadow: 0 7px 20px rgba(180, 110, 135, 0.1);
+  transition: all 0.3s ease;
+}
+
+.reason span {
+  display: block;
+  font-size: 15px;
+  color: #b7833f;
+  font-weight: 700;
+}
+
+.reason strong {
+  display: none;
+  margin-top: 8px;
+  font-size: 17px;
+  color: #865466;
+}
+
+.reason.open {
+  background: #fff;
+  border-color: #d19b4d;
+}
+
+.reason.open span {
+  display: none;
+}
+
+.reason.open strong {
+  display: block;
+}
+
+/* ПОЗДРАВЛЕНИЕ */
+
+.greeting-section {
+  padding-top: 50px;
+}
+
+.greeting-card {
+  position: relative;
+  padding: 35px 22px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid #ddb06b;
+  box-shadow:
+    0 15px 40px rgba(177, 108, 134, 0.15),
+    0 0 30px rgba(213, 160, 78, 0.08);
+}
+
+.greeting-card h2 {
+  text-align: center;
+  font-size: 44px;
+  margin-bottom: 25px;
+}
+
+.greeting-card p {
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 18px;
+}
+
+.card-decoration {
+  text-align: center;
+  color: #d09b4d;
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.final-love {
+  text-align: center;
+  color: #d77d9e;
+  font-family: "Dancing Script", cursive;
+  font-size: 30px !important;
+  font-weight: 700;
+  margin-top: 25px;
+}
+
+/* ПОДАРОК */
+
+.gift-section {
+  min-height: 75vh;
+  padding: 70px 20px 100px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gift-button {
+  border: 2px solid #d69d4e;
+  border-radius: 22px;
+  padding: 18px 28px;
+  background: #fff;
+  color: #d184a3;
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  box-shadow: 0 10px 30px rgba(186, 117, 142, 0.18);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gift-button:active {
+  transform: scale(0.96);
+}
+
+.gift-reveal {
+  display: none;
+  margin-top: 35px;
+  padding: 30px 25px;
+  width: min(90vw, 430px);
+  border-radius: 28px;
+  background: linear-gradient(145deg, #fff, #fff6dc);
+  border: 2px solid #d7a04e;
+  box-shadow: 0 15px 40px rgba(189, 134, 61, 0.2);
+  animation: revealGift 0.8s ease;
+}
+
+.gift-reveal.show {
+  display: block;
+}
+
+.gift-title {
+  color: #d184a3;
+  font-family: "Dancing Script", cursive;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.gift-location {
+  margin-top: 15px;
+  color: #b7833f;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+@keyframes revealGift {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.bottom-love {
+  margin-top: 50px;
+  color: #d77d9e;
+  font-family: "Dancing Script", cursive;
+  font-size: 32px;
+}
+
+/* ЛЕПЕСТКИ */
+
+#petals {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 50;
+}
+
+.petal {
+  position: absolute;
+  top: -30px;
+  color: #e9a2b8;
+  font-size: 18px;
+  animation: fall linear forwards;
+  opacity: 0.7;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-30px) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+/* ПЛАВНОЕ ПОЯВЛЕНИЕ */
+
+.hero,
+.section,
+.gift-section {
+  animation: pageAppear 1.2s ease both;
+}
+
+@keyframes pageAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ПЛАНШЕТ / БОЛЬШИЕ ЭКРАНЫ */
+
+@media (min-width: 600px) {
+
+  .moments {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  .moment p {
+    font-size: 17px;
+  }
+
+  .greeting-card {
+    padding: 45px 50px;
+  }
+
+  .greeting-card p {
+    font-size: 17px;
+  }
+}
