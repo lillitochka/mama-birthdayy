@@ -8,18 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ЗАГРУЗКА */
   setTimeout(() => {
-    loader.classList.add("hidden");
+  loader.classList.add("hidden");
 
-    music.volume = 0.35;
+  music.volume = 0.35;
 
-    const playPromise = music.play();
-
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        musicButton.textContent = "♫";
-      });
-    }
-  }, 1800);
+  music.play().catch(() => {
+    musicButton.textContent = "♫";
+  });
+}, 500);
 
 
   /* МУЗЫКА */
