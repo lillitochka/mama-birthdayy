@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   music.play().catch(() => {
     musicButton.textContent = "♫";
   });
-}, 500);
+}, 4000);
 
 
   /* МУЗЫКА */
